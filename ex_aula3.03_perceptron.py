@@ -42,7 +42,6 @@ def plotmodel(w1, w2, b):
 #função para classificar um ponto dados os pesos do modelo
 def classify(ponto, w1, w2, b):
     ret = w1 * ponto[0] + w2 * ponto[1] + b
-
     if ret >= 0:
         return 1, 'yellow'
     else:
@@ -50,31 +49,33 @@ def classify(ponto, w1, w2, b):
 
 
 # Gerar um conjunto de dados sintético
-X, Y = make_classification(random_state=42, n_samples=100, n_features=2, n_informative=1, n_redundant=0, n_clusters_per_class=1)
+X, Y = make_classification(random_state=30, n_samples=100, n_features=2, n_informative=1, n_redundant=0, n_clusters_per_class=1)
 
 # X é um array de características e y é um array de rótulos de classe
 print(X.shape)  # Saída: (100, 20)
 print(Y.shape)  # Saída: (100,)
-print(X)
-print(Y)
+print(X[11])
+print(Y[11])
 
 
 
 w1 = 5 #a da equação da reta "aula 2"
 w2 = 1 #b da equação da reta
-b = 0 #c da equação da reta
+b = -3 #c da equação da reta
 
 #chama a função para gerar a reta
 plotmodel(w1, w2, b)
 #define ponto para ser analisada sua posição em função da reta
-p = (1.5, 1)
+p = (1.96902533, -0.05099111)
 #função classify recebe a classe e a cor, de acordo com a classificação em função da reta
 classe, cor = classify(p, w1, w2, b)
 print(classe, cor)
 plt.plot(p[0], p[1], marker='^', markersize=20, color='g')
 
+#função para percorrer todos os valores de "X". Cria números sequenciais de acordo com o tamanho de X
 for k in range(len(X)):
-    categ, _ = classify(X[k], w1, w2, b)
+    categ, cor = classify(X[k], w1, w2, b)
+    #print(categ, cor)
     if categ == Y[k]:
         acertos =+ 1
 
