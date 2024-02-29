@@ -55,13 +55,8 @@ def classify(ponto, w1, w2, b):
 X, Y = make_classification(random_state=42, n_samples=100, n_features=2, n_informative=1, n_redundant=0, n_clusters_per_class=1)
 
 # X é um array de características e y é um array de rótulos de classe
-#print(X.shape)  # Saída: (100, 20)
-#print(Y.shape)  # Saída: (100,)
-#print(X[11])
-#print(X[11,0])
-#print(X[11,1])
-#print(Y[11])
-#print(Y[12])
+print(X.shape)  # Saída: (100, 20)
+print(Y.shape)  # Saída: (100,)
 
 w1 = 5 #a da equação da reta "aula 2"
 w2 = 1 #b da equação da reta
@@ -73,11 +68,14 @@ plt.scatter(X[:, 0], X[:, 1], marker='o', c=Y, edgecolors='k')
 plotmodel(w1, w2, b)
 
 #define ponto para ser analisada sua posição em função da reta
+#aqui estou referenciando um dos valores gerados para X
 p = (X[19,0], X[19,1])
 
 #função classify recebe a classe e a cor, de acordo com a classificação em função da reta
-#classe, cor = classify(p, w1, w2, b)
-classe, cor = classify(X[19], w1, w2, b)
+#conciderando um relógio, valores negativos ficam a esquerda (anti horário) e positivos a direita (horário)
+classe, cor = classify(p, w1, w2, b)
+
+#imprime o ponto de validação no gráfico
 plt.plot(p[0], p[1], marker='^', markersize=5, color='g')
 print(classe, cor)
 if classe == Y[19]:
@@ -86,7 +84,8 @@ else:
     print(f"errou, classe de Y = {Y[19]}")
 
 
-#função para percorrer todos os valores de "X". Cria números sequenciais de acordo com o tamanho de X
+#função para percorrer todos os valores de "X" na validação acima. 
+#"range" cria números sequenciais de acordo com o tamanho "len" de X
 acertos = 0
 for k in range(len(X)):
     categ, _ = classify(X[k], w1, w2, b)
