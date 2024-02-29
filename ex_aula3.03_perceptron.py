@@ -15,8 +15,10 @@ def plotmodel(w1, w2, b):
     # w1*x + w2*y + b = 0
     # y = (-w1*x - b)/w2
     y = (-w1*x -b)/w2
+    print(y[19])
+    print(x[19])
 
-    plt.scatter(X[:, 0], X[:, 1], marker='o', c=Y, edgecolors='k')
+    #plt.scatter(X[:, 0], X[:, 1], marker='o', c=Y, edgecolors='k')
     #pega os valores de limite da reta
     xmin, xmax = plt.gca().get_xlim()
     ymin, ymax = plt.gca().get_ylim()
@@ -31,9 +33,10 @@ def plotmodel(w1, w2, b):
     plt.xlabel("Eixo X")
     plt.ylabel("Eixo Y")
 
-    # Criar gráfico de linha
+    # Criar linha do gráfico 
     plt.plot(x, y)
 
+    #limita a área do Gráfico nos limites de X e Y
     plt.xlim(xmin, xmax)
     plt.ylim(ymin, ymax)
     # Exibe o Gráfico
@@ -49,40 +52,49 @@ def classify(ponto, w1, w2, b):
 
 
 # Gerar um conjunto de dados sintético
-X, Y = make_classification(random_state=30, n_samples=100, n_features=2, n_informative=1, n_redundant=0, n_clusters_per_class=1)
+X, Y = make_classification(random_state=42, n_samples=100, n_features=2, n_informative=1, n_redundant=0, n_clusters_per_class=1)
 
 # X é um array de características e y é um array de rótulos de classe
-print(X.shape)  # Saída: (100, 20)
-print(Y.shape)  # Saída: (100,)
-print(X[11])
-print(Y[11])
-
-
+#print(X.shape)  # Saída: (100, 20)
+#print(Y.shape)  # Saída: (100,)
+#print(X[11])
+#print(X[11,0])
+#print(X[11,1])
+#print(Y[11])
+#print(Y[12])
 
 w1 = 5 #a da equação da reta "aula 2"
 w2 = 1 #b da equação da reta
 b = -3 #c da equação da reta
 
+plt.scatter(X[:, 0], X[:, 1], marker='o', c=Y, edgecolors='k')
+
 #chama a função para gerar a reta
 plotmodel(w1, w2, b)
+
 #define ponto para ser analisada sua posição em função da reta
-p = (1.96902533, -0.05099111)
+p = (X[19,0], X[19,1])
+
 #função classify recebe a classe e a cor, de acordo com a classificação em função da reta
-classe, cor = classify(p, w1, w2, b)
+#classe, cor = classify(p, w1, w2, b)
+classe, cor = classify(X[19], w1, w2, b)
+plt.plot(p[0], p[1], marker='^', markersize=5, color='g')
 print(classe, cor)
-plt.plot(p[0], p[1], marker='^', markersize=20, color='g')
+if classe == Y[19]:
+    print("Acertou")
+else:
+    print(f"errou, classe de Y = {Y[19]}")
+
 
 #função para percorrer todos os valores de "X". Cria números sequenciais de acordo com o tamanho de X
+acertos = 0
 for k in range(len(X)):
-    categ, cor = classify(X[k], w1, w2, b)
-    #print(categ, cor)
+    categ, _ = classify(X[k], w1, w2, b)
     if categ == Y[k]:
-        acertos =+ 1
+        print(acertos)
+        acertos += 1
 
 print("Acurácia: {0}".format(100*acertos/len(X)))
-
-
-
 
 #mostra o gráfico
 plt.show()
