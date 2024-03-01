@@ -38,7 +38,8 @@ b = 1.2 #c da equação linear - desloca para cima ou para baixo
 p = (-1, 1)
 print(w1*p[0] + w2*p[1] + b)
 
-
+#abaixo estamos instanciando a rede neural definindo as entradas e saídas
+#perceptron = nn.Linear(in_features=2, out_features=1) - out_features = quantidade de nerônios
 perceptron = nn.Linear(2,1)
 
 
