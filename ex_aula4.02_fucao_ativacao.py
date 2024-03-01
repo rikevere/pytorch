@@ -67,8 +67,8 @@ for k, idx in enumerate([35, 41, 59, 73]):
     #act recebe o retorno ativado  da função sigmoide do que foi alimentado pelo perceptron
     #ativando a saída do perceptron
     #as ativações pode ser de diferentes tipos, conforme documentação Torch:
-    activation = nn.Sigmoid() #A identificação dos pontos é definida como 0 ou 1, dependendo do lado da reta
-    #activation = nn.ReLU() #A identificação dos pontos é definida com zero para quem for negativo mantém os valores positivos
+    #activation = nn.Sigmoid() #A identificação dos pontos é definida como 0 ou 1, dependendo do lado da reta
+    activation = nn.ReLU() #A identificação dos pontos é definida com zero para quem for negativo mantém os valores positivos
     #activation = nn.Tanh() #A identificação dos pontos -e definida positivo ou negativo, dependendo do lado da reta
     act = activation(ret)
     print(f'act = sigmoide(ret): {act.data.numpy()[0]}')
