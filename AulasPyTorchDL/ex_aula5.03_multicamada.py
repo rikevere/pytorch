@@ -4,7 +4,7 @@ from sklearn.datasets import make_moons
 import torch  
 from torch import nn #pacote do PyTorch de neural networks
 from torchsummary import summary
-from exaula505classeModule import MinhaRede
+from AulasPyTorchDL.exaula505classeModule import MinhaRede
 
 # DEFININDO O LOCAL DE PROCESSAMENTO GPU OU CPU:
 if torch.cuda.is_available():
@@ -53,6 +53,8 @@ print(f'Tamanho pred1 - nn.Modelu: {pred1.size()}')
 
 
 plt.scatter(X1[:, 0], X1[:, 1], marker='o', c=Y1, s=25, edgecolors='k')
+
+print(f'X1 Data Type: {X1.dtype}')
 
 
 plt.show()

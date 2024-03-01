@@ -86,7 +86,7 @@ else:
     print(f"errou, classe de Y = {Y[19]}")
 
 
-#função para percorrer todos os valores de "X" na validação acima. 
+#laço para percorrer todos os valores de "X" na validação acima. 
 #"range" cria números sequenciais de acordo com o tamanho "len" de X
 acertos = 0
 for k in range(len(X)):

@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from classeModeloexSementes import MinhaRede
+from AulasPyTorchDL.classeModeloexSementes import MinhaRede
 
 
 dados = pd.read_csv('sementes.csv')
