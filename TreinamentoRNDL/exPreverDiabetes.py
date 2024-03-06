@@ -81,6 +81,8 @@ print(f'Shape dos Tensores depois "Forward" rede com squeeze(): {pred.squeeze().
 #Como o shape dos Tensores depois "Forward" da rede retornou mais de uma dimensão e quando você está avaliando um modelo com uma única amostra, 
 #a saída pode ter uma dimensão extra, como neste caso. Usar squeeze() pode ajudar a remover essa dimensão extra para que a saída possa ser diretamente 
 #comparada com o rótulo ou usada em cálculos subsequentes Ytns.shape.
+#Algumas funções de perda esperam entradas específicas em termos de dimensões. Por exemplo, nn.CrossEntropyLoss 
+#espera que as saídas do modelo não tenham uma dimensão de lote de tamanho 1 se você estiver trabalhando com uma única amostra.
 loss = criterio(pred.squeeze(), Ytns)
 print(f'Depois da função de Perda: {loss}')
 

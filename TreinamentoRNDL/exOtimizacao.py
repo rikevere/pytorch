@@ -129,7 +129,7 @@ X = torch.FloatTensor(data).to(device) #converte o tipo do tensor e carrega da G
 #(DADOS: 178 em duas dimenções (178, 2) Rótulos/Tipos (targets): 178 em uma dimensão (178,))
 Y = torch.LongTensor(target).to(device) 
 
-for i in range(300): #Laço de repetição para que o FORWARD possa ser repetido por 100 ciclos
+for i in range(300): #Laço de repetição (iterações) para que o FORWARD possa ser repetido por 100 ciclos
     #FORWARD - Passos que precisam ser dados pela rede para que se possa gaver treinamento:
     #1 - Alimentar os dados para a rede:
     predicao = net(X)

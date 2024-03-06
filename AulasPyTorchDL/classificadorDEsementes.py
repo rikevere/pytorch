@@ -5,6 +5,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from torch import nn 
 
+# DEFININDO O LOCAL DE PROCESSAMENTO GPU OU CPU:
+if torch.cuda.is_available():
+    devide = torch.device('cuda')
+else:
+    device = torch.device('cpu')
+print(f'Dispositivo de processamento: {device}')
+
 #Primeiro, precisamos carregar e preparar os dados para o treinamento. Isso inclui ler o arquivo CSV, 
 #normalizar os dados (se necessário) e dividir os dados em conjuntos de treinamento e teste.
 

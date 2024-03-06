@@ -70,7 +70,7 @@ print(Xtns.dtype, Ytns.dtype)
 #realizando a predição de 'y'
 predicao = net(Xtns)
 print(predicao.shape, Ytns.shape)
-#irá entregar um valor escalar para indicar o erro (média) nos dados fornecidos.
+#irá entregar um valor escalar para indicar o erro (média) nos dados fornecidos (conjunto de dados).
 loss = criterios(predicao, Ytns)
 print(loss)
 
