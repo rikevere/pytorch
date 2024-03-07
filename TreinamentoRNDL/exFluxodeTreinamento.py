@@ -58,7 +58,7 @@ def main():
             feature = self.features(X)
             # Aplica a camada de saída e depois softmax na dimensão correta
             #output = self.softmax(self.out(feature))  
-            output = self.out(feature)  # Corrigido aqui
+            output = self.out(feature)  # Corrigido aquigit 
 
             return output
 
@@ -68,14 +68,10 @@ def main():
     #DEFININDO LOSS E OTIMIZADOR
     criterion = nn.CrossEntropyLoss().to(args['device'])
     optimizer = optim.Adam(net.parameters(), lr=args['lr'], weight_decay=args['weight_decay'])
-    conta=0
     
     for epoch in range(args['num_epochs']):
-        conta += 1
         epoch_loss = [] 
         #Podemos então iterar no dataset para observar algumas amostras e seus rótulos
-        print(f'Tamanho train_loader: {len(train_loader)}')
-        print(f'Epoca: {conta}')
         for batch in train_loader:
             dado, rotulo = batch
             
